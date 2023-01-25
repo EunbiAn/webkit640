@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="clickBtn">Click</button>
+    <h1 id="heading">Hello world</h1>
+
+    <!-- 내부 선언 방식 -->
+    <!-- 외부 선언 방식 -->
+    <script src="./day01ex02.js">
+        // DOM - 문서 객체 모델
+        // 변수 선언에 있어 var let 사용
+        // id 속성이 clickBtn인 요소인 DOM 셀렉트
+        // id 값이 같은 요소는 1개 뿐
+        // var clickBtn = document.getElementById('clickBtn');
+        // var heading = document.getElementById('heading'); 
+        
+        // 그 외 같은 요소들 묶어서 사용하고 싶으면 id 아닌 class 로
+        // 변수는 aa는 리스트 형태로 클래스 속성이 aa인 모든 요소들을 담음
+        //  ex)  var aa = document.getElementsByClassName("aa");
+
+        // 콘솔 출력
+        // console.log(clickBtn);
+        // console.dir(clickBtn);
+        
+        // //선택된 DOM 요소에 이벤트 핸들러 걸기
+        // clickBtn.onclick = function(event) {
+        //     // 클릭 이벤트가 발생하면 이벤트를 콘솔에 출력
+        //     console.log(heading);
+        //     heading.style.backgroundColor = 'yellow';
+        
+        // }
+    </script>
+</body>
+</html>

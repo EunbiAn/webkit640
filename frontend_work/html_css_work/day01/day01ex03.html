@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ul: 순서가 없는 목록 -->
+    <ul type="circle">
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+    <!-- ol: 순서가 있는 목록 -->
+    <ol type="a" class="menu">
+        <li>title01</li>
+        <li>title02</li>
+        <li>title03</li>
+    </0l>
+
+    <script>
+        // 문서 내의 모든 li 요소들를 선택하여 liList가 참조하도록 한다.
+        // document.getElementsByClassName의 결과는 List가 됨
+        var olTag = document.getElementsByClassName("menu");
+        // console.log(olTag[0]);
+        var liList = olTag[0].getElementsByTagName("li");
+        // console.log(liList[0]);
+        // console.log(liList[1]);
+        // console.log(liList[2]);
+   
+        // liList의 모든 요소에 이벤트 핸들러 한 번에 추가
+        for(var i = 0; i < liList.length; i++) {
+            // console.log(liList[i]);
+            liList[i].onclick = function(event) {
+                console.log(event.target.innerText);
+            }
+        }
+
+        // ul 응용 버전
+        // ul 요소를 클릭 하면 요소의 냐용 값으로 배경 색 변경
+        var ulTag = document.getElementsByTagName("ul");
+        var liList2 = ulTag[0].getElementsByTagName("li");
+        for(var liTag of liList2) {
+            liTag.onclick = function(event) {
+                // this는 객체 자신
+                var colorName = this.innerText;
+                document.body.style.backgroundColor= colorName;
+            }
+        }
+    </script>
+</body>
+</html>

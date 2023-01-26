@@ -18,16 +18,32 @@
 </head>
 <body>
     <h1>계산기</h1>
-    <input type="text"><br/>
+    <input type="text" id="result"><br/>
     <div id="calc"></div>
 
     <script>
+        var result = document.getElementById("result");
         var calc = document.getElementById("calc");
+        var operList = ["+","-","*","/","="];
         for(var i=0; i<16; i++) {
             var newBtn = document.createElement("button");
             newBtn.innerText = i;
             calc.appendChild(newBtn);
         }
+        for(var i=0; i<5; i++) {
+            var newBtn = document.createElement("button");
+            newBtn.innerText = operList[i];
+            calc.appendChild(newBtn);
+        }
+        newBtn.onclick = function(event) {
+            console.log(newBtn.innerText);
+            var resultNum = 0; // 결과값을 담을 곳
+            result.value = resultNum;
+
+        }
+
+
+
     </script>
 </body>
 </html>

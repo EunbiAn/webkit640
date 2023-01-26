@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 3px solid red;
+            /* left는 요소가 레이어여야 적용된다. position */
+            position: absolute;
+            transition: all 0.5s;
+        }
+        #btnGroup{
+            width:300px;
+        }
+        #btnGroup button {
+            width:100px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="btnGroup">
+        <button class="playBtn">좌측 상단</button>
+        <button class="playBtn">우측 상단</button>
+        <button class="playBtn">좌측 하단</button>
+        <button class="playBtn">우측 하단</button>
+    </div>
+    <div id="box">Box</div>
+    
+
+    <script>
+        var colors =  ['blue','orange','brown','pink'];
+        var playBtnArr = document.getElementsByClassName('playBtn');
+        var box = document.getElementById('box');
+
+        // var posArr = [ [0,0],[200,0],[0,200],[200,200] ];
+        var posArr = [
+            {x:0, y:0}, {x:200,y:0}, {x:0, y:200}, {x:200, y:200}
+        ]
+       
+        for(var cnt = 0; cnt < playBtnArr.length; cnt++) {
+            // playBtnArr[cnt].x = posArr[cnt][0];
+            // playBtnArr[cnt].y = posArr[cnt][1];
+            playBtnArr[cnt].x = posArr[cnt].x;
+            playBtnArr[cnt].y = posArr[cnt].y;
+            cnt++;
+            playBtnArr[cnt].onclick = function(event) {
+                box.style.left = this.x+"px";
+                box.style.top = this.y+"px";
+            }
+        }
+
+    </script>
+</body>
+</html>

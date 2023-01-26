@@ -29,12 +29,13 @@
         // }
 
         // (2) i 번째 요소 클릭 시 colors의 i 번째 색상 적용
-        for(var i = 0; i < lis.length;  i++) {  
-            lis[i].i = i; // 필요한 속성을 객체에 임의로 추가
-            lis[i].onclick = function(event) {
-                console.log(this.i);
-                this.style.backgroundColor = colors[this.i];    
-            }      
+      
+            for(var i = 0; i < lis.length;  i++) { 
+                lis[i].i = i;
+                lis[i].onclick = function(event) {
+                   this.style.backgroundColor = colors[this.i];    
+     		}
+
         }
     </script>
 </body>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 3px solid red;
+            /* left는 요소가 레이어여야 적용된다. position */
+            position: absolute;
+            transition: all 0.5s;
+        }
+        #btnGroup{
+            width:300px;
+        }
+        #btnGroup button {
+            width:100px;
+            height: 50px;
+            margin: 5px;
+        }
+        /* stylesheet에서 속성으로 접근하는 방법 */
+        button[data-x='200'][data-y="200"] {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="btnGroup">
+        <button data-x="0" data-y="0" class="playBtn">좌측 상단</button>
+        <button data-x="200" data-y="0" class="playBtn">우측 상단</button>
+        <button data-x="0" data-y="200" class="playBtn">좌측 하단</button>
+        <button data-x="200" data-y="200" class="playBtn">우측 하단</button>
+    </div>
+    <div id="box">Box</div>
+    
+
+    <script>
+        var colors =  ['blue','orange','brown','pink'];
+        var playBtnArr = document.getElementsByClassName('playBtn');
+        var box = document.getElementById('box');
+
+        for(var cnt = 0; cnt < playBtnArr.length; cnt++) {
+            playBtnArr[cnt].color = colors[cnt];
+            playBtnArr[cnt].onclick = function(event) {
+                box.style.left = this.dataset.x+"px";
+                box.style.top = this.dataset.y+"px";
+                document.body.style.backgroundColor = this.color;
+            }
+        }
+
+    </script>
+</body>
+</html>

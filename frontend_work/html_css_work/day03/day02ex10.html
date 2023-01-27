@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>초등학생 저학년용 계산기</h1>
+    <p>결과는 음수가 나오지 않도록</p>
+    <input type="number" name="num1" id="num1" value="5">
+    <select id="oper">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" name="num2" id="num2" value="10">
+    <input type="button" id="resultBtn" value="확인">
+    <div id="result">결과: </div>
+
+    <script>
+        var num1 = document.querySelector("#num1");
+        var num2 = document.querySelector("#num2");
+        var oper = document.querySelector("#oper");
+        var resultBtn = document.querySelector("#resultBtn");
+        var result = document.querySelector("#result");
+        
+        resultBtn.onclick = function(event) {
+            
+            // typeof - 데이터의 타입 확인
+            // 첫번째 값의 유효성 확인 
+            if(num1.value == "" || !num1.value ) {
+                alert("첫번째 값을 입력하세요. ");
+                num1.focus();
+                return;  
+            }   
+            if(isNaN(parseInt(num1.value))){// paesrInt() - 문자열 데이터를 정수 데이터로 변환
+                alert("첫 번째 값이 숫자가 아닙니다");
+                num1.value = "";
+                num1.focus();
+                return;
+            }
+            // 두번째 값의 유효성 확인
+            if(num2.value == "" || !num2.value ) {
+                alert("두번째 값을 입력하세요. ");
+                num1.focus();
+                return;  
+            }   
+            if(isNaN(parseInt(num2.value))){
+                alert("두번째 값이 숫자가 아닙니다");
+                num2.value = "";
+                num2.focus();
+                return;
+            }
+
+            var fristNum = Number(num1.value);    
+            var secondNum = Number(num2.value);
+            var resultNum = 0;  // resultNum - 연산 결과를 담을 변수
+            // var resultNum = Math.abs(eval(num1.value + oper.value + num2.value)); // eval() - 문자열 식을 반환
+
+            switch(oper.value){
+                case '+': resultNum = fristNum + secondNum;  break;
+                case '-': 
+                        // if(fristNum < secondNum)    {    // num2.value가 num1.value 보다 더 크다면 
+                        //     var tmp = fristNum;     // num1.value의 값을 임시로 저장
+                        //     fristNum = secondNum;   // firstNum = num2.value (더 큰 수인 num2.value를 fristNum으로)
+                        //     secondNum = tmp;        // secondNum = num1.value
+                        // }
+                        resultNum = fristNum - secondNum;  // 항상 큰 숫자에서 작은 숫자를 뺄셈함
+                        resultNum = Math.abs(resultNum); // Math.abs(resultNum) - 절댓값으로
+                        break;   
+                case '*': resultNum = fristNum * secondNum; break;
+                case '/': resultNum = fristNum / secondNum; break;
+            }
+            result.innerHTML = "결과 : " + resultNum;
+        }
+
+    </script>
+</body>
+</html>

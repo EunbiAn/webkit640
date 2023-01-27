@@ -28,8 +28,9 @@
         var result = document.querySelector("#result");
         
         resultBtn.onclick = function(event) {
-            var fristNum = parseInt(num1.value);
+            var fristNum = parseInt(num1.value);    // paesrInt() - 문자열 데이터를 정수 데이터로 변환
             var secondNum = parseInt(num2.value);
+        
             var resultNum = 0;  // resultNum - 연산 결과를 담을 변수
 
             switch(oper.value){

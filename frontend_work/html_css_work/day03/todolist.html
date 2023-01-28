@@ -52,6 +52,7 @@
             {no:2, todo:"카페가기", done: false},
             {no:3, todo:"청소하기", done: false}
         ];
+        var cnt = 4;
 
         // 목록 출력
         function drawList(){
@@ -80,7 +81,7 @@
             var newWorkValue = newWork.value;
 
             // todoList array에 추가
-            todoList.push({no:todoList.length, todo:newWorkValue , done:false});
+            todoList.push({no:cnt++, todo:newWorkValue , done:false});
 
             // 목록 출력
             drawList();

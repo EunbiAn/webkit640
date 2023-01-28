@@ -61,8 +61,8 @@
 
                 var listTmpStr = `
                     <li>
-                        <input type="checkbox">
-                        <span>${todo.todo}</span>
+                        <input onchange="changedone(${todo.no})" type="checkbox" ${todo.done? "checked":""} >
+                        <span class=${todo.done?"del":""}>${todo.todo}</span>
                         <button onclick="deleteWork(${todo.no})">삭제</button>
                     </li>`;
                 newListStr += listTmpStr;
@@ -86,15 +86,23 @@
             drawList();
         }
 
-        // 삭제
+        // 삭제 기능
         function  deleteWork(no) {
             for(var i=0; i<todoList.length; i++) {
                 if(todoList[i].no == no){
                     todoList.splice(i, 1);
                 }
             }
+            drawList();
+        }
+
+        // 체크박스 onchange
+        function changedone(todoNum) {
             for(var i=0; i<todoList.length; i++) {
-                console.log(todoList[i].no);
+                if(todoList[i].no == todoNum){
+                    todoList[i].done = !todoList[i].done;
+                    break;
+                }
             }
             drawList();
         }

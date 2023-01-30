@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input 중에서도 타입이 텍스트인 것과 form1 아래의 textarea에 적용 */
+        #form1 input[type=text], #form1 textarea{    
+            border: none;
+            border-bottom: 3px solid skyblue;
+            background-color: lightblue;
+            width: 400px;
+        }
+    </style>
+
+    <script>
+        // function, var로 선언하면 최상위 window의 멤버 필드에 들어간다.
+        // event 핸들러의 첫번째 인자는 event 객체이다.
+        function validateForm(event) {
+            // event가 발생한 form을 evnt.target으로 지정
+            form = event.target;
+            // form의 기본 기능은 페이지 전환
+            // 이벤트의 기본 기능을 일시 중지 할 수 있다
+            // 이벤트는 이벤트 핸들러 함수에 자동 생성
+            event.preventDefault(); //일시중지
+     
+            if(form.subject.value == ""){   // 제목 검사
+                alert("Please enter Subject");
+                form.subject.focus();
+                return ;   // 결과가 false라면 전송되지 않음
+            }
+            if(form.writer.value == ""){   // 이름 검사
+                alert("Please enter Writer");
+                form.writer.focus();
+                return;   
+            }
+            if(form.writer.value.length< 2){ 
+                alert("이름을 2글자 이상 입력하세여");
+                form.writer.focus();
+                return;  
+            }
+            form.action = window.location.protocol + "//" + window.location.host+
+                            "/write?subject="+form.subject.value+"&writer="+form.writer.value+"&content="+form.content.value;
+            form.submit(); 
+        }
+        // internal 방식으로 변경
+        // form1의 dom 객체 선택
+        // form1에 이벤트 핸들러 걸기
+    
+        // 자바스크립트는 인터프리터 방식
+        // window(객체)가 모두 로드되면 기능이 실행 하도록 이벤트 핸들러 적용
+        window.onload = function() { 
+            // DOM 
+            //document.forms // 문서의 모든 폼을 읽어 HTMLCollection로 반환
+            //var form = document.forms[0];
+            var form = document.getElementById("form1");
+            
+            // 이벤트 발생 시 event 객체가 자동 생성됨
+           //  form.onsubmit = function(){ validateForm(this); }
+            form.onsubmit = validateForm; // 참조 시킬 경우엔 괄호 생략
+        }
+    
+    </script>
+</head>
+<body>
+    <div class = "container">
+        <h1>글쓰기</h1>
+        <form id="form1"> 
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="subject"></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="writer"></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea name="content" cols="30" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="저장" ></td>
+                </tr>
+            </table>
+        </from>
+    </div>
+</body>
+</html>

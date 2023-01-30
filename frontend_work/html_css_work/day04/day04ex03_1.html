@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input 중에서도 타입이 텍스트인 것과 form1 아래의 textarea에 적용 */
+        #form1 input[type=text], #form1 textarea{    
+            border: none;
+            border-bottom: 3px solid skyblue;
+            background-color: lightblue;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // function, var로 선언하면 최상위 window의 멤버 필드에 들어간다.
+        function validateForm(form) {
+            // form의 기본 기능은 페이지 전환
+            // 이벤트의 기본 기능을 일시 중지 할 수 있다
+            // 이벤트는 이벤트 핸들러 함수에 자동 생성
+            event.preventDefault(); //일시중지
+
+            if(form.subject.value == ""){   // 제목 검사
+                alert("Please enter Subject");
+                form.subject.focus();
+                return ;   // 결과가 false라면 전송되지 않음
+            }
+            if(form.writer.value == ""){   // 이름 검사
+                alert("Please enter Writer");
+                form.writer.focus();
+                return;   
+            }
+            if(form.writer.value.length< 2){ 
+                alert("이름을 2글자 이상 입력하세여");
+                form.writer.focus();
+                return;  
+            }
+         
+            form.action = "";
+            form.submit(); 
+            
+            
+        }
+    </script>
+
+    <div class = "container">
+        <h1>글쓰기</h1>
+        <form action="" id="form1" onsubmit="javascript:validateForm(this)"> 
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="subject"></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="writer"></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea name="contnet" cols="30" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="저장" ></td>
+                </tr>
+            </table>
+        </from>
+    </div>
+
+</body>
+</html>

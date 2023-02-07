@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsDay05Ex01_2</title>
+</head>
+<body>
+    <h1>JSON 실습</h1>
+    <script>
+        // js의 object 형식
+        const myObj = {name:'John', age:31, city:'newyork'};
+        // console.log(myObj);
+        const jsonStr = JSON.stringify(myObj);
+        // console.log(jsonStr);
+        const myJSON = '{ "name": "John", "age": 31, "city": "newyork"}';
+        const jsonObj = JSON.parse(myJSON);
+        console.log(jsonObj);
+    </script>
+    
+</body>
+</html>

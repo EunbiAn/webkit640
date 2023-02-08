@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jqueryDay01Ex01_1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // jQuery 진입점
+        // 문서를 모두 로드하면 함수를 실행
+        // $(document).on("ready", function(){
+        //     alert("hello world!");
+        // });
+        // $(document).ready(function(){
+        //     alert("hello world!");
+        // });
+        // jQuery(function() {
+        //     alert("hello world!");
+        // });
+        // $(function() {
+        //     alert("hello world!");
+        // });
+
+        $(document).ready(function(){
+            $("#clickBtn").on("click",function(event){
+                alert("click!");
+            });
+            // 자바스크립트에선...
+            // document.getElementById("clickBtn").addEventListener("click", function(event){
+            //     alert("click!");
+            // });
+        });
+    </script>
+</head>
+<body>
+    <button id="clickBtn">Click Me</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="btns">
+        <button id="redBtn">Red</button>
+        <button id="greenBtn">Green</button>
+        <button id="blueBtn">Blue</button>
+    </div>
+
+    <script>
+  //var btns = document.getElementById("btns").getElementsByTagName("button");
+        //for(var btn of btns){
+        //    btn.onclick = function(){
+        //        document.body.style.backgroundColor = this.innerText;
+        //    }
+        //};
+
+
+    // List 형태의 여러 요소에 한 번에 이벤트 적용 가능
+    $('#btns > button').click(function(event) {
+        // $()에 DOM 객체를 인자로 넣어주면 바로 제이쿼리 객체로 바뀐다
+        $("body").css("backgroundColor", $(this).text());
+    });
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <ul>
+        <li>오징어</li>
+        <li>꼴뚜기</li>
+        <li>대구</li>
+        <li>명태</li>
+        <li>거북이</li>
+    </ul>
+
+    <script>
+        var colors = ['red', 'green', 'blue', 'pink', 'purple'];
+        var a = $("ul>li")
+        
+        $("ul > li").css("backgroundColor", function(idx, fontColor){
+            return colors[idx];
+        })
+
+        // $("ul > li").click(function(event){
+
+        // });
+    </script>
+</body>
+</html>

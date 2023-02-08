@@ -21,7 +21,11 @@ const saramList = [
 
 app.get('/saram/list', (req, res) => {
     res.send({saramList});  //  == {saramList : saramList}
-
+});
+app.get('/saram', (req, res) => {
+    let data = {no: (saramList.length +1),name: req.query.name, email: req.query.email, phone: req.query.phone};
+    saramList.push(data);
+    res.end();
 });
 
 

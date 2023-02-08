@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>jsDay05Ex2_5</h1>
-    <form id="inputForm" action="" method="get">
+    <form id="inputForm" action="" method="post">
         Name : <input type="text" id="name"> </br>
         Email : <input type="text" id="email"></br>
         Phone : <input type="text" id="phone"></br>
@@ -64,14 +64,20 @@
             let inputName = form.name.value;
             let inputEmail = form.email.value;
             let inputPhone = form.phone.value;
-            
+        
             // myGetAjax를 이용하여 서버에 전송
-            myGetAjax('/saram/list/get', function(xhr){
-                let saramData = {name: inputName, email: inputEmail, phone: inputPhone};
 
-            });
+            myGetAjax(`/saram?name=${form.name.value}&email=${form.email.value}&phone=${form.phone.value}`, function(xhr){
+                // 콜백함수 ...
+             });
 
             // 결과를 json으로 받아 화면에 갱신한다
+            // myGetAjax('/saram/list', function(xhr){
+            //     let saramList = JSON.parse(xhr.responseText)['saramList'];
+            //     let complie = _.template(saramListTemp.innerHTML);
+            //     let html = complie({saramList});
+            //     demo.innerHTML = html;
+            // });
         });
 
         loadBtn.addEventListener("click", (event)=>{

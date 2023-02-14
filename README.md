@@ -28,7 +28,8 @@
 ### 웹 서비스 프론트엔드 개발
 - Day 12 - react 개발 환경 구축, axios를 사용한 서버 통신
 - Day 13 - react-node.js axios를 사용한 서버 통신
-
+- Day 14 - 리액트 컴포넌트
+- Day 15 - [React로 Todo List 구현하기](https://github.com/EunbiAn/todolist_react)
 
 ## 웹 백엔드
 ### 웹 서비스 아키텍쳐

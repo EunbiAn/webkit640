@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        td.showInput{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>할 일 목록</h1>
+    <div>
+        <form action="/todoList" method="post">
+            <input type="text" value="새 할 일" name="newItem">
+            <input type="submit" value="저장">
+
+        </form>
+    </div>
+    <table width="40%">
+        <tr>
+            <th width="10%">번호</th>
+            <th width="10%">체크</th>
+            <th width="30%">할일</th>
+            <th width="10%">수정</th>
+            <th width="10%">삭제</th>
+        </tr>
+   
+    <%
+        for(var todo of todoList){ %>
+        <tr>
+            <td><%=todo.idx %></td>
+            <td><input type="checkbox"></td>
+            <td class="showTitle"><%=todo.title %></td>
+            <td class="showInput hide"><input value="<%=todo.title %>"/></td>
+            <td><button class="modifyBtn" data-idx="<=%todo.idx%>">수정</button></td>
+            <td><button class="deleBtn">삭제</button></td>
+        </tr>
+    <% } %> 
+</table>
+
+<script>
+    $("button.modifyBtn").click(function(){
+        const row =  $(this).parent().parent();
+        row.find("td.showTitle").hide();
+        row.find("td.showInput").show();
+        $(this).text("완료");
+        
+    });
+</script>
+</body>
+</html>

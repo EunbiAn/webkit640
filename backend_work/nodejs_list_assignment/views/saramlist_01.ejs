@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
+</head>
+
+<body>
+    <h1>사람 정보 관리</h1>
+
+    <h2>정보 입력</h2>
+    <table width="40%" border="1">
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" id="id"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td><input type="text" id="email"></td>
+        </tr>
+
+        <tr>
+            <td colspan="3"><input type="submit" id="submit" value="저장"></td>
+        </tr>
+    </table>
+
+
+    <hr />
+
+
+    <h2>사람 목록</h2>
+    <table width="40%" border="1">
+        <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+        </tr>
+        <% for(var saram of saramInfo) { %>
+            <tr>
+
+                <td>
+                    <%=saram.no%>
+                </td>
+                <td>
+                    <%=saram.id%>
+                </td>
+                <td>
+                    <%=saram.name%>
+                </td>
+                <td>
+                    <%=saram.email%>
+                </td>
+     
+            </tr>
+            <% } %>
+    </table>
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+
+        $('#submit').click(function () {
+         
+            $.ajax({
+                type: 'POST',
+                url: '/saramlist',
+                data: {
+                    id: $('#id').val(),
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                },
+                dataType: 'json',
+                success: function (data) {   //파일 주고받기가 성공했을 경우
+                    alert("send data !");
+                },
+                error: function (err) {     // 실패 시
+                    alert("failed : " + err);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

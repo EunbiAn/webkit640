@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "http://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <button id="connectBtn">연결하기</button>
+    <button id="closeBtn">연결종료</button>
+    <hr />
+    <input id="userId" value="testid">
+    <input id="userName" value="test">
+    <input id="userMessage" value="hahah">
+    <button id = "loginBtn">login</button>
+    <hr/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = null;
+
+        function connection() {
+            socket = io.connect("http://localhost:3000");
+            socket.on("connect", function () {
+                console.log("socket server에 연결 됨.");
+            });
+
+        }
+
+        $('#connectBtn').click(function(e){
+            connection();
+        });
+        $('#closeBtn').click(function(e){
+            if(socket){
+                socket.close();
+            }
+        });
+        $("#loginBtn").click(function(e){
+            if(socket){
+                socket.emit('login',{
+                    userId: $('#userId').val(),
+                    userName: $('#userName').val(),
+                    userMessage: $('#userMessage').val()
+                });
+            }else{
+                alert("연결이 안되어있습니다");
+                
+            }
+        });
+
+    </script>
+</body>
+
+</html>

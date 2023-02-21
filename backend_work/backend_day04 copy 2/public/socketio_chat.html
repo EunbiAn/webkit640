@@ -7,6 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src = "http://code.jquery.com/jquery.js"></script>
+    <style>
+        #messageView {
+            width:580px;
+            height: 200px;
+            border: 1px solid black
+        };
+    </style>
 </head>
 
 <body>
@@ -18,17 +25,41 @@
     <input id="userMessage" value="hahah">
     <button id = "loginBtn">login</button>
     <hr/>
+    <div id="messageView"></div>
+    받는 사람 : <input id="receiveId" value="testid" /> <br/>
+    전송 메세지 : <input id="sendMsg" value="message" /> <br/>
+    <button id="sendBtn">전송</button>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = null;
-
-        function connection() {
+        var userId = null;
+        function connection()  {
             socket = io.connect("http://localhost:3000");
-            socket.on("connect", function () {
+            socket.on("connect", function() {
                 console.log("socket server에 연결 됨.");
+                
+                socket.on("send message", function(data) {
+                    console.log(data);
+                    let newLine = $("#messageView").html() + data.sender+": " + data.msg + "<br/>";
+                    $("#messageView").html(newLine);
+                });
             });
-
         }
+        $('#sendBtn').click(function(e){
+            if(socket){
+                let sendData = {
+                    sender : userId,
+                    receive : $("#receiveId").val(),
+                    msg : $("#sendMsg").val()
+                }
+                socket.emit("send", sendData);
+                let newLine = $("#messageView").html() + sendData.sender+": " + sendData.msg + "<br/>";
+                $("#messageView").html(newLine);
+            }
+        });
+
+            
+        
 
         $('#connectBtn').click(function(e){
             connection();
@@ -40,6 +71,7 @@
         });
         $("#loginBtn").click(function(e){
             if(socket){
+                userId = $('#userId').val();
                 socket.emit('login',{
                     userId: $('#userId').val(),
                     userName: $('#userName').val(),
@@ -50,6 +82,7 @@
                 
             }
         });
+  
 
     </script>
 </body>

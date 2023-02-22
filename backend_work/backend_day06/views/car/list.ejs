@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car/list.ejs</title>
+</head>
+<body>
+    <h1>자동차 목록</h1>
+
+    <table>
+        <th>
+            <tr>이름</tr>
+            <tr>가격</tr>
+            <tr>회사</tr>
+            <tr>연식</tr>
+        </th>
+        
+    <%
+    for(var car of carList) {
+    %>
+        <td>
+            <tr><%=car.name %></tr>
+            <tr><%=car.price %></tr>
+            <tr><%=car.company %></tr>
+            <tr><%=car.year %></tr>
+        </td>
+    
+    <%
+    } // end of for
+    %>
+    </table>
+</body>
+</html>

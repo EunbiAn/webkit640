@@ -111,18 +111,46 @@ router.route("/product").get( async (req, res)=>{
     }
 });
 
-router.route("/users/user_detail").get( async (req, res)=>{
+router.route("/users/user_detail").get( (req, res)=>{
     res.writeHead(200, {"Content-Type":"text/html; charset=utf8"});
     if(localDB ){
         localDB.collection("users").findOne({id: req.session.user.id}, function(err, user) {
             if(err) throw err;
-            req.app.render("users/user_detail", { user}, function(err, html) {
+            if(user){
+                req.app.render("users/user_detail", { user}, function(err, html) {
                 if(err) throw err;
                 res.end(html);
             });
+            }
         });
     }
 });
+
+router.route('/users/update/passwd').post((req, res) =>{
+    let oldPasswd = req.body.oldPasswd;
+    let newPasswd = req.body.newPasswd;
+    console.log(req.session.user.id , oldPasswd);
+    if(localDB ){
+        localDB.collection("users").findOne({id: req.session.user.id, passwd: oldPasswd}, function(err, user) {
+            if(err) throw err;
+            if(user){
+                //localDB.collection("users").updateOne( {id: req.session.user.id, passwd: oldPasswd},{$set:{passwd : newPasswd}} 으로
+                // 한 번에 처리하고 싶었는데 변경이 정상적으로 완료되었을 때와 아닐때의 조건을 아직 알지못했다.. modifiedCount와  matchedCount 접근방법을 달리하면 될 듯,,
+                localDB.collection("users").updateOne( {id: req.session.user.id},{$set:{passwd : newPasswd}}, function(err, result) {
+                    if(err) throw err;
+                    res.redirect('/users/user_detail');
+                }); 
+            } else{
+                res.writeHead(200, {"Content-Type":"text/html; charset=utf8"});
+                res.write("비밀번호 변경에 실패하였습니다 :( ");
+                res.write('<a href="/users/user_detail"> My Page </a>');
+                res.write('<a href="/product"> 상품페이지 </a>');
+                res.end();
+            }
+        });
+    }
+ });
+
 
 app.use("/", router);
 server.listen(app.get("port"), ()=>{

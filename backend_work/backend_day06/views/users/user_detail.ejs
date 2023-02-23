@@ -7,11 +7,14 @@
     <title>users/user_detail.ejs</title>
 </head>
 <body>
-       
     <h1>마이페이지</h1>
             <p> 이름 : <%= user.name %></p>
             <p>아아디 : <%= user.id %></p>
-             <p>비밀번호 :<%= user.passwd %></p>
+            <p>비밀번호 : <%=user.passwd %>
+                <a href="/passwd_modify.html">비밀번호 수정</a >
+             </p>
+
             <p>사용자 구분 : <%= user.role %></p>
+            
 </body>
 </html>

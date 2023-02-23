@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users/user_detail.ejs</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <style>
+       #showInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+       
+    <h1>비밀번호 수정</h1>
+            <form action="/users/user_detail/update/_id="+<%={user._id}%>+"&passwd="+newPasswd method="get" >
+            <p id="showTitle">비밀번호 : <%=user.passwd %> </p>
+            <p id="showInput">비밀번호 :<input id="newPasswd"/></p>
+            <button id="modifyBtn" data-idx="<%=user._id %>">비밀번호 변경</button>
+        </form>
+            <p>사용자 구분 : <%= user.role %></p>
+
+            <script>
+                $("#modifyBtn").click(function() {
+                    if($("#showTitle").css("display")!=="none"){
+                         $("#showTitle").hide();
+                       $("#showInput").show();
+                        $(this).text("완료");
+                    // } else {
+                    //     // 서버로 변경 내용과 idx를 보낸다.
+                    //     // 페이지가 변경 되면서 Query String으로 파라미터 전송.
+                    //     // 주소/todoList/update?idx=2&title=수정합니다.
+                    //     let newPasswd = $("#showInput>input").val();
+                    //     let id = $(this).data("idx");
+                    //     console.log(newPasswd, id);
+                    //     let urlStr = `/users/user_detail/update?id=${id}&passwd=${newPasswd}`;
+                    //     location.assign(urlStr);
+                    }
+                 });
+            </script>
+</body>
+</html>

@@ -1,12 +1,13 @@
-#  WebKIT640
+#  웹개발 실무인재 양성과정
 
-✏️ 경북 네트워크형 캠퍼스 SW 아카데미 - 이론 학습 및 실습 저장소 ✏️
 
+#### ✏️ [SW전문인재양성사업] 웹개발 실무인재 양성과정(WebKit640)
+####  - 이론 학습 및 실습 저장소 ✏️
 
 이론 교육 기간 : 23.01.25 ~ 23.03.15
 
 
-[여기](https://velog.io/@qqqqld/series/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C)를 누르면 일별 학습 게시물을 볼 수 있습니다
+[여기](https://velog.io/@qqqqld/series/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C) 에서 일별 학습 정리 게시물을 볼 수 있습니다
 
 
 ## 프론트엔드
@@ -30,6 +31,14 @@
 - Day 13 - react-node.js axios를 사용한 서버 통신
 - Day 14 - 리액트 컴포넌트
 - Day 15 - [React로 Todo List 구현하기](https://github.com/EunbiAn/todolist_react)
+- Day 16 - Redux 사용하기
 
 ## 웹 백엔드
-### 웹 서비스 아키텍쳐
+### Node.js
+- Day 17 - expree 서버 구축
+- Day 18 - REST API
+- Day 19 - Socket.io
+- Day 20 - 일대일 채팅 기능 구현
+- Day 21 - 로그인/회원가입/정보조회 및 수정 기능(MongoDB 사용하기)
+
+
